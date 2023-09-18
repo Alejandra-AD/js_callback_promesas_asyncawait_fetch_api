@@ -27,38 +27,32 @@ const posts = [
 
 
 
-const findPostById = (id) =>{
+const findPostById = (id) => {
 
-  const post = posts.find(item => item.id === id);
-return new Promise((resolve, reject) =>{
+    const post = posts.find(item => item.id === id);
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
 
-    if (post){
-        resolve(post);
-    }else{
-        reject("no se encontro el posit con id " + id);
-    }
-});
+            if (post) {
+                resolve(post);
+            } else {
+                reject("no se encontro el posit con id " + id);
+            }
+        }, 2000);
+
+
+    });
 
 }
 
-findPostById(4)
-    .then (post => console.log(post))//recibo el post y lo pinto
-    .catch (err => console.log(err))// recibe el error
+// findPostById(4)
+//     .then (post => console.log(post))//recibo el post y lo pinto
+//     .catch (err => console.log(err))// recibe el error
 
+const buscar = async (id) => {
+    const post = await findPostById(id);
+    console.log(post);
 
-// infierno de las promesas (es menos terrible que el de los callbacks)
-// findPostById(1)
-//     .then(post =>{
-//         console.log(post);
-//         return findPostById(2);
-//     })
-//     .then(post => {
-//         console.log(post);
-//         return findPostById(3);
-//     })
-//     .then(post => {
-//         console.log(post);
-//         return findPostById(4);
-//     })
-//     .catch (err => console.log(err))
+}
 
+buscar(2);
