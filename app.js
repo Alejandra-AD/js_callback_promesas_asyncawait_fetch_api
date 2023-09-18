@@ -41,8 +41,24 @@ return new Promise((resolve, reject) =>{
 
 }
 
-findPostById(2)
+findPostById(4)
     .then (post => console.log(post))//recibo el post y lo pinto
     .catch (err => console.log(err))// recibe el error
 
+
+// infierno de las promesas (es menos terrible que el de los callbacks)
+// findPostById(1)
+//     .then(post =>{
+//         console.log(post);
+//         return findPostById(2);
+//     })
+//     .then(post => {
+//         console.log(post);
+//         return findPostById(3);
+//     })
+//     .then(post => {
+//         console.log(post);
+//         return findPostById(4);
+//     })
+//     .catch (err => console.log(err))
 
